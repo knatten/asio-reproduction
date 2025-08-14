@@ -77,8 +77,11 @@ int main()
   try
   {
     boost::asio::io_context io_context;
+    auto work = boost::asio::make_work_guard(io_context);
+    std::thread t([&](){io_context.run();});
     udp_server server(io_context);
-    io_context.run();
+    work.reset();
+    t.join();
   }
   catch (std::exception& e)
   {
