@@ -57,7 +57,7 @@ private:
             boost::asio::placeholders::error,
             boost::asio::placeholders::bytes_transferred));
 
-      start_receive();
+      // start_receive();
     }
   }
 
